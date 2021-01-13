@@ -11,7 +11,7 @@ const Store = () => {
           <h1>Lackmond Foo Chicken</h1>
           <p>
             The Best Fried Chicken on the Planet. You never try you never know,
-            once you try you never go !
+            once you try you never go!!
           </p>
         </div>
         <ProductsGrid />

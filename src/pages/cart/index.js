@@ -22,7 +22,7 @@ const Cart = () => {
 
   var ok = "";
   for (var i = 0; i < storage.length; i++) {
-    ok = ok + storage[i].name + "x" + storage[i].quantity + ",";
+    ok = ok + storage[i].name + "x" + storage[i].quantity + ", ";
   }
 
   return (
@@ -71,6 +71,7 @@ const Cart = () => {
                         "https://wa.me/60165282302?text=Hi there, I would like to make an order: " +
                         ok
                       }
+                      style={{ color: "white" }}
                     >
                       CHECKOUT
                     </a>
