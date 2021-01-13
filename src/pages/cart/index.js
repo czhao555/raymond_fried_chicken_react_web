@@ -68,7 +68,7 @@ const Cart = () => {
                   >
                     <a
                       href={
-                        "https://wa.me/60165282302?text=Hi there, I would like to make an order: " +
+                        "https://wa.me/60143438978?text=Hi there, I would like to make an order: " +
                         ok
                       }
                       style={{ color: "white" }}
