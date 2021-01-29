@@ -4,8 +4,8 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   footer: {
     width: "100%",
-    padding: "2%",
-    paddingTop: "2%",
+    paddingTop: "3%",
+    paddingBottom: "3%",
     textAlign: "center",
   },
 }));

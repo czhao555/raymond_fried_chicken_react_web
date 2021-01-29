@@ -1,29 +1,34 @@
 import React, { useContext } from "react";
 import ProductItem from "./ProductItem";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import styles from "./ProductsGrid.module.scss";
+import { makeStyles, Grid, Card } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({
+  card: {
+    height: 350,
+    width: 350,
+  },
+  grid: {
+    border: "none",
+  },
+}));
 
 const ProductsGrid = () => {
   const { products } = useContext(ProductsContext);
+  const classes = useStyles();
 
   return (
-    <div className={styles.p__container}>
-      <div className="row">
-        <div className="col-sm-8">
-          <div className="py-3">{products.length} Products</div>
-        </div>
-        {/*<div className="col-sm-4">
-                    <div className="form-group">
-                        <input type="text" name="" placeholder="Search product" className="form-control" id=""/>
-                    </div>
-    </div>*/}
-      </div>
-      <div className={styles.p__grid}>
+    <div>
+      <p>{products.length} Products</p>
+      <Grid container spacing={2}>
         {products.map((product) => (
-          <ProductItem key={product.id} product={product} />
+          <Grid item className={classes.grid} xs={12} sm={6} md={4}>
+            <Card className={classes.card}>
+              <ProductItem key={product.id} product={product} />
+            </Card>
+          </Grid>
         ))}
-      </div>
-      <div className={styles.p__footer}></div>
+      </Grid>
     </div>
   );
 };

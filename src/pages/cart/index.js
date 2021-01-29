@@ -22,7 +22,11 @@ const Cart = () => {
 
   var ok = "";
   for (var i = 0; i < storage.length; i++) {
-    ok = ok + storage[i].name + "x" + storage[i].quantity + ", ";
+    if (i !== storage.length - 1) {
+      ok = ok + storage[i].name + "x" + storage[i].quantity + ", ";
+    } else {
+      ok = ok + storage[i].name + "x" + storage[i].quantity + ". ";
+    }
   }
 
   return (
@@ -68,7 +72,7 @@ const Cart = () => {
                   >
                     <a
                       href={
-                        "https://wa.me/60143438978?text=Hi there, I would like to make an order: " +
+                        "https://wa.me/60165688490?text=Hi there, I would like to make an order: " +
                         ok
                       }
                       style={{ color: "white" }}

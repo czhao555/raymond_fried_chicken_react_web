@@ -17,7 +17,7 @@ const About = () => {
           Facebook : Raymond Foo
           <br />
           <br />
-          Add my social apps account for discount !
+          Add my social apps account for discount!
         </p>
       </div>
     </Layout>

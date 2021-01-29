@@ -7,12 +7,10 @@ const CartProducts = () => {
   const { cartItems } = useContext(CartContext);
 
   return (
-    <div className="p__container">
-      <div className="card card-body border-0">
-        {cartItems.map((product) => (
-          <CartItem key={product.id} product={product} />
-        ))}
-      </div>
+    <div className="card card-body border-0">
+      {cartItems.map((product) => (
+        <CartItem key={product.id} product={product} />
+      ))}
     </div>
   );
 };
