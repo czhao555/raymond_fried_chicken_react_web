@@ -1,11 +1,19 @@
 import React from "react";
-import styles from "./footer.module.scss";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  footer: {
+    width: "100%",
+    padding: "2%",
+    paddingTop: "2%",
+    textAlign: "center",
+  },
+}));
 
 const Footer = () => {
+  const classes = useStyles();
   return (
-    <footer className={`${styles.footer}  mt-5 p-3`}>
-      2020 &copy; Lackmond Foo Chicken
-    </footer>
+    <footer className={classes.footer}>2020 &copy; Lackmond Foo Chicken</footer>
   );
 };
 
