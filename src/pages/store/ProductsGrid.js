@@ -6,18 +6,18 @@ import { makeStyles, Grid, Card } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   card: {
     "@media (max-width:400px)": {
-      height: 350,
+      height: "auto",
       width: 280,
     },
-    "@media (max-width:250px)": {
-      height: 350,
+    "@media (max-width:280px)": {
+      height: "auto",
       width: 220,
     },
     height: 350,
     width: 350,
   },
   grid: {
-    borderColor: "white",
+    border: "none",
   },
   container: { justifyContent: "center" },
 }));
@@ -28,7 +28,7 @@ const ProductsGrid = () => {
 
   return (
     <div>
-      <p>{products.length} Products</p>
+      <div>{products.length} Products</div>
       <Grid container spacing={3} className={classes.container}>
         {products.map((product) => (
           <Grid item className={classes.grid}>
