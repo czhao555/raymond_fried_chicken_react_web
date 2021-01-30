@@ -16,9 +16,6 @@ const useStyles = makeStyles(() => ({
     height: 350,
     width: 350,
   },
-  grid: {
-    border: "none",
-  },
   container: { justifyContent: "center" },
 }));
 
@@ -28,10 +25,10 @@ const ProductsGrid = () => {
 
   return (
     <div>
-      <div>{products.length} Products</div>
+      <p>{products.length} Products</p>
       <Grid container spacing={3} className={classes.container}>
         {products.map((product) => (
-          <Grid item className={classes.grid}>
+          <Grid item>
             <Card className={classes.card}>
               <ProductItem key={product.id} product={product} />
             </Card>

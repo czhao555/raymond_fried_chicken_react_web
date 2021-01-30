@@ -4,7 +4,33 @@ import Layout from "../../components/Layout";
 import CartProducts from "./CartProducts";
 import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { makeStyles, Card, CardContent, Typography } from "@material-ui/core";
+const useStyles = makeStyles(() => ({
+  cart: {
+    textAlign: "center",
+    paddingTop: 40,
+  },
+  cartItem: {
+    justifyContent: "center",
+    display: "flex",
+    "@media (max-width:900px)": {
+      justifyContent: "center",
+      display: "block",
+    },
+  },
+  button: {
+    textAlign: "center",
+  },
+  checkoutButton: {
+    backgroundColor: "black",
+    padding: 5,
+  },
+  root: {
+    minWidth: 200,
+    height: "100%",
+  },
+}));
 
 const Cart = () => {
   const {
@@ -12,9 +38,11 @@ const Cart = () => {
     cartItems,
     itemCount,
     clearCart,
-    checkout,
+    //checkout,
     handleCheckout,
   } = useContext(CartContext);
+
+  const classes = useStyles();
 
   const storage = localStorage.getItem("cart")
     ? JSON.parse(localStorage.getItem("cart"))
@@ -25,20 +53,20 @@ const Cart = () => {
     if (i !== storage.length - 1) {
       ok = ok + storage[i].name + "x" + storage[i].quantity + ", ";
     } else {
-      ok = ok + storage[i].name + "x" + storage[i].quantity + ". ";
+      ok = ok + storage[i].name + "x" + storage[i].quantity + " ";
     }
   }
 
   return (
     <Layout title="Cart" description="This is the Cart page">
       <div>
-        <div className="text-center mt-5">
+        <div className={classes.cart}>
           <h1>Cart</h1>
           <p>This is the Cart Page.</p>
         </div>
 
-        <div className="row no-gutters justify-content-center">
-          <div className="col-sm-9 p-3">
+        <div className={classes.cartItem}>
+          <div className="ok">
             {cartItems.length > 0 ? (
               <CartProducts />
             ) : (
@@ -47,27 +75,33 @@ const Cart = () => {
               </div>
             )}
 
-            {checkout && (
+            {/*{checkout && (
               <div className="p-3 text-center text-success">
                 <p>Checkout successfull</p>
                 <Link to="/" className="btn btn-outline-success btn-sm">
                   BUY MORE
                 </Link>
               </div>
-            )}
+            )}*/}
           </div>
           {cartItems.length > 0 && (
-            <div className="col-sm-3 p-3">
-              <div className="card card-body">
-                <p className="mb-1">Total Items</p>
-                <h4 className=" mb-3 txt-right">{itemCount}</h4>
-                <p className="mb-1">Total Payment</p>
-                <h3 className="m-0 txt-right">{formatNumber(total)}</h3>
-                <hr className="my-4" />
-                <div className="text-center">
+            <Card className={classes.root}>
+              <CardContent>
+                <Typography color="textSecondary">Total Items</Typography>
+                <Typography variant="h5" gutterBottom>
+                  {itemCount}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  Total Payment
+                </Typography>
+                <Typography variant="h5">{formatNumber(total)}</Typography>
+                <div>
+                  <hr className="ok" />
+                </div>
+                <div className={classes.button}>
                   <button
                     type="button"
-                    className="btn btn-primary mb-2"
+                    className={classes.checkoutButton}
                     onClick={handleCheckout}
                   >
                     <a
@@ -89,8 +123,8 @@ const Cart = () => {
                     CLEAR
                   </button>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           )}
         </div>
       </div>
