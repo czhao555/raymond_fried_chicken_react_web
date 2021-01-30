@@ -72,7 +72,7 @@ const Cart = () => {
           ttp +
           "0. " +
           " Delivery Address: " +
-          address +
+          String(address) +
           ". Please bank in to: Lackmond Foo Wai Mun(Maybank) Account:111312313131. Thank you."
       );
     }
