@@ -42,6 +42,8 @@ const Cart = () => {
     handleCheckout,
   } = useContext(CartContext);
 
+  const ttp = String(parseFloat(total) + 5.0);
+
   const classes = useStyles();
 
   const storage = localStorage.getItem("cart")
@@ -56,6 +58,25 @@ const Cart = () => {
       ok = ok + storage[i].name + "x" + storage[i].quantity + ". ";
     }
   }
+
+  const [address, setAddress] = React.useState("");
+
+  const formValidation = () => {
+    if (address === "" || address == null) {
+      alert("Delivery Address must be filled out");
+    } else {
+      window.location.replace(
+        "https://wa.me/60165688490?text=Hi there, I would like to make an order: " +
+          ok +
+          " Total payment: RM" +
+          ttp +
+          "0. " +
+          " Delivery Address: " +
+          address +
+          ". Please bank in to: Lackmond Foo Wai Mun(Maybank) Account:111312313131. Thank you."
+      );
+    }
+  };
 
   return (
     <Layout title="Cart" description="This is the Cart page">
@@ -87,32 +108,46 @@ const Cart = () => {
           {cartItems.length > 0 && (
             <Card className={classes.root}>
               <CardContent>
-                <Typography color="textSecondary">Total Items</Typography>
-                <Typography variant="h5" gutterBottom>
+                <textarea
+                  placeholder="Delivery Address"
+                  value={address}
+                  onChange={(event) => setAddress(event.target.value)}
+                  rows={4}
+                  style={{ width: "100%" }}
+                  name="address"
+                  required
+                />
+                <Typography color="textSecondary" style={{ paddingTop: 15 }}>
+                  TOTAL ITEM(S)
+                </Typography>
+                <Typography variant="h6" gutterBottom>
                   {itemCount}
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
-                  Total Payment
+                  SUBTOTAL
                 </Typography>
-                <Typography variant="h5">{formatNumber(total)}</Typography>
+                <Typography variant="h6" gutterBottom>
+                  {formatNumber(total)}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  SHIPPING COSTS
+                </Typography>
+                <Typography variant="h6">{formatNumber(5)}</Typography>
+                <hr />
+                <Typography className={classes.pos} color="textSecondary">
+                  TOTAL PAYMENT
+                </Typography>
+                <Typography variant="h5">{formatNumber(ttp)}</Typography>
                 <div>
-                  <hr className="ok" />
+                  <hr />
                 </div>
                 <div className={classes.button}>
                   <button
                     type="button"
                     className={classes.checkoutButton}
-                    onClick={handleCheckout}
+                    onClick={formValidation}
                   >
-                    <a
-                      href={
-                        "https://wa.me/60165688490?text=Hi there, I would like to make an order: " +
-                        ok
-                      }
-                      style={{ color: "white" }}
-                    >
-                      CHECKOUT
-                    </a>
+                    <a style={{ color: "white" }}>CHECKOUT</a>
                   </button>
 
                   <button
