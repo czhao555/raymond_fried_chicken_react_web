@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   cartItem: {
     justifyContent: "center",
     display: "flex",
-    "@media (max-width:900px)": {
+    "@media (max-width:800px)": {
       justifyContent: "center",
       display: "block",
     },
@@ -53,7 +53,7 @@ const Cart = () => {
     if (i !== storage.length - 1) {
       ok = ok + storage[i].name + "x" + storage[i].quantity + ", ";
     } else {
-      ok = ok + storage[i].name + "x" + storage[i].quantity + " ";
+      ok = ok + storage[i].name + "x" + storage[i].quantity + ". ";
     }
   }
 
