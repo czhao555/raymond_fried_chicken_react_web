@@ -5,12 +5,21 @@ import { makeStyles, Grid, Card } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   card: {
+    "@media (max-width:400px)": {
+      height: 350,
+      width: 280,
+    },
+    "@media (max-width:250px)": {
+      height: 350,
+      width: 220,
+    },
     height: 350,
     width: 350,
   },
   grid: {
-    border: "none",
+    borderColor: "white",
   },
+  container: { justifyContent: "center" },
 }));
 
 const ProductsGrid = () => {
@@ -20,9 +29,9 @@ const ProductsGrid = () => {
   return (
     <div>
       <p>{products.length} Products</p>
-      <Grid container spacing={2}>
+      <Grid container spacing={3} className={classes.container}>
         {products.map((product) => (
-          <Grid item className={classes.grid} xs={12} sm={6} md={4}>
+          <Grid item className={classes.grid}>
             <Card className={classes.card}>
               <ProductItem key={product.id} product={product} />
             </Card>
