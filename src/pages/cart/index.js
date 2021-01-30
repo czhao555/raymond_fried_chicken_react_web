@@ -39,7 +39,7 @@ const Cart = () => {
     itemCount,
     clearCart,
     //checkout,
-    handleCheckout,
+    //handleCheckout,
   } = useContext(CartContext);
 
   const ttp = String(parseFloat(total) + 5.0);
@@ -146,8 +146,9 @@ const Cart = () => {
                     type="button"
                     className={classes.checkoutButton}
                     onClick={formValidation}
+                    style={{ color: "white" }}
                   >
-                    <a style={{ color: "white" }}>CHECKOUT</a>
+                    CHECKOUT
                   </button>
 
                   <button
