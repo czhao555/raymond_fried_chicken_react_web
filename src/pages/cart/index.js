@@ -197,7 +197,7 @@ const Cart = () => {
                     onClick={() => setModal(false)}
                     style={{
                       color: "white",
-                      backgroundColor: "#4faea4",
+                      backgroundColor: "red",
                       //width: "60%",
                       //maxWidth: "300px",
                       borderRadius: 10,
