@@ -49,10 +49,7 @@ const useStyles = makeStyles(() => ({
 
     justifyContent: "center",
   },
-  paper: {
-    width: "120vw",
-    height: "50vh",
-  },
+  paper: {},
 }));
 
 const Cart = () => {
@@ -190,7 +187,7 @@ const Cart = () => {
               <Card className="card" style={{ textAlign: "center", Width: 20 }}>
                 <CardContent className="content" style={{ padding: "6vh" }}>
                   <Typography style={{ fontWeight: "bold", fontSize: "6vh" }}>
-                    Order Success??
+                    Order Success?
                   </Typography>
                   {/*<Typography style={{ padding: "2vw", fontSize: "5vh" }}>
                     Thank you. Please proceed to login.
@@ -199,43 +196,45 @@ const Cart = () => {
                     //disabled={submit}
                     onClick={() => setModal(false)}
                     style={{
-                      padding: "1vw",
                       color: "white",
                       backgroundColor: "#4faea4",
-                      width: "60%",
-                      maxWidth: "300px",
-                      borderRadius: 25,
+                      //width: "60%",
+                      //maxWidth: "300px",
+                      borderRadius: 10,
+                      margin: 10,
                     }}
                   >
                     <Typography
                       style={{
                         fontWeight: "bold",
                         color: "white",
-                        fontSize: "4vh",
+                        //fontSize: "4vh",
                       }}
                       align="center"
                     >
                       No. Continue last order.
                     </Typography>
                   </Button>
+                  &nbsp;
                   <Button
                     //disabled={submit}
                     onClick={handleCheckout}
                     style={{
-                      padding: "1vw",
+                      padding: "10",
                       color: "white",
                       backgroundColor: "#4faea4",
-                      width: "60%",
-                      maxWidth: "300px",
-                      borderRadius: 25,
+                      //width: "60%",
+                      //maxWidth: "300px",
+                      borderRadius: 10,
+                      margin: 10,
                     }}
                   >
-                    <Link to="/">
+                    <Link to="/" style={{ textDecoration: "none" }}>
                       <Typography
                         style={{
                           fontWeight: "bold",
                           color: "white",
-                          fontSize: "4vh",
+                          //fontSize: "4vh",
                         }}
                         align="center"
                       >
