@@ -4,8 +4,15 @@ import Layout from "../../components/Layout";
 import CartProducts from "./CartProducts";
 import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
-//import { Link } from "react-router-dom";
-import { makeStyles, Card, CardContent, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import {
+  makeStyles,
+  Card,
+  CardContent,
+  Typography,
+  Modal,
+  Button,
+} from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   cart: {
     textAlign: "center",
@@ -17,6 +24,12 @@ const useStyles = makeStyles(() => ({
     "@media (max-width:800px)": {
       justifyContent: "center",
       display: "block",
+    },
+    modal: {
+      display: "flex",
+      margin: "6vw",
+
+      justifyContent: "center",
     },
   },
   button: {
@@ -38,24 +51,20 @@ const Cart = () => {
     cartItems,
     itemCount,
     clearCart,
-    //checkout,
-    //handleCheckout,
+    checkout,
+    handleCheckout,
   } = useContext(CartContext);
 
-  const ttp = String(parseFloat(total) + 5.0);
+  const ttp = String((parseFloat(total) + 5.0).toFixed(2));
 
   const classes = useStyles();
 
-  const storage = localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart"))
-    : "Hi";
-
-  var ok = "";
-  for (var i = 0; i < storage.length; i++) {
-    if (i !== storage.length - 1) {
-      ok = ok + storage[i].name + "x" + storage[i].quantity + ", ";
+  let order = "";
+  for (let i = 0; i < cartItems.length; i++) {
+    if (i !== cartItems.length - 1) {
+      order = order + cartItems[i].name + "x(" + cartItems[i].quantity + "), ";
     } else {
-      ok = ok + storage[i].name + "x" + storage[i].quantity + ". ";
+      order = order + cartItems[i].name + "x(" + cartItems[i].quantity + "). ";
     }
   }
 
@@ -67,14 +76,16 @@ const Cart = () => {
     } else {
       window.location.replace(
         "https://wa.me/60165688490?text=Hi there, I would like to make an order: " +
-          ok +
+          order +
           " Total payment: RM" +
           ttp +
-          "0. " +
+          ". " +
           " Delivery Address: " +
           String(address) +
           ". Please bank in to: Lackmond Foo Wai Mun(Maybank) Account:111312313131. Thank you."
       );
+
+      handleCheckout();
     }
   };
 
@@ -96,14 +107,14 @@ const Cart = () => {
               </div>
             )}
 
-            {/*{checkout && (
+            {checkout && (
               <div className="p-3 text-center text-success">
                 <p>Checkout successfull</p>
                 <Link to="/" className="btn btn-outline-success btn-sm">
                   BUY MORE
                 </Link>
               </div>
-            )}*/}
+            )}
           </div>
           {cartItems.length > 0 && (
             <Card className={classes.root}>
