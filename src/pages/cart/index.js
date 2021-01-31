@@ -5,14 +5,7 @@ import CartProducts from "./CartProducts";
 import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
 import { Link } from "react-router-dom";
-import {
-  makeStyles,
-  Card,
-  CardContent,
-  Typography,
-  Modal,
-  Button,
-} from "@material-ui/core";
+import { makeStyles, Card, CardContent, Typography } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   cart: {
     textAlign: "center",
